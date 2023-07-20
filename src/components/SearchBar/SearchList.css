@@ -1,0 +1,14 @@
+.search-list {
+  padding: 10px 20px;
+  color: black;
+}
+
+.search-list:hover {
+  cursor: pointer;
+  background-color: #efefef;
+}
+
+.search-link {
+  color: black;
+  text-decoration: none;
+}

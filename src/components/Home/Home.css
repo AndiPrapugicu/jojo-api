@@ -1,0 +1,34 @@
+.home {
+  display: flex;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.home-select img {
+  margin: 40px;
+  border: 2px solid black;
+  border-radius: 12px;
+}
+
+.home-select img:hover {
+  background-color: white;
+  border: 2px solid #f31559;
+  box-shadow: 0 5px 15px 5px #f31559;
+}
+
+.character-image {
+  transition: filter 0.3s ease;
+}
+
+.home-select:hover .character-image:not(:hover) {
+  filter: blur(3px);
+}
+
+.home-select:hover .stand-image:not(:hover) {
+  filter: blur(3px);
+}
+
+.home-select .stand-image:hover {
+  border: 2px solid #00ff00;
+  box-shadow: 0 5px 15px 5px rgba(0, 255, 0, 0.75);
+}
