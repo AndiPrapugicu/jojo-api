@@ -3,17 +3,19 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Stands.css";
 import standImages from "../images/standImages";
+import StandFilter from "../../Filter/StandFilter";
 
 const Stands = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [standsPerPage] = useState(15);
+  const [sortingMethod, setSortingMethod] = useState("alphabetical");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://stand-by-me.herokuapp.com/api/v1/stands"
+          `https://stand-by-me.herokuapp.com/api/v1/stands?sort=${sortingMethod}`
         );
         setData(response.data);
       } catch (error) {
@@ -22,7 +24,7 @@ const Stands = () => {
     };
 
     fetchData();
-  }, []);
+  }, [sortingMethod]);
 
   const indexOfLastStand = currentPage * standsPerPage;
   const indexOfFirstStand = indexOfLastStand - standsPerPage;
@@ -36,9 +38,32 @@ const Stands = () => {
     setCurrentPage(currentPage - 1);
   };
 
+  const sortStands = (method) => {
+    const sortedData = [...data];
+
+    if (method === "alphabetical") {
+      sortedData.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (method === "standUser") {
+      sortedData.sort((a, b) => a.standUser.localeCompare(b.standUser));
+    }
+
+    setData(sortedData);
+    setSortingMethod(method);
+    setCurrentPage(1);
+  };
+
   return (
     <div className="stands" style={{ margin: "0 auto", width: "50%" }}>
-      <h1>Stands List</h1>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <h1>Stands List</h1>
+        <StandFilter onSort={sortStands} />
+      </div>
       <ul>
         {currentStands.map((stand) => (
           <li key={stand.id} className="stands-data">

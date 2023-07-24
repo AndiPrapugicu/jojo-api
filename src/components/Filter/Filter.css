@@ -1,0 +1,42 @@
+.filter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filter-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  color: black;
+}
+
+.filter-button-container {
+  position: relative;
+}
+
+.filter-button:hover {
+  background-color: white;
+}
+
+.filter-dropdown {
+  position: absolute;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.filter-dropdown button {
+  /* position: absolute; */
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  color: black;
+}
+
+.filter-dropdown button:hover {
+  background-color: white;
+}
+
+.filter-dropdown-button {
+  font-size: 12px;
+}

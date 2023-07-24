@@ -3,11 +3,13 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Characters.css";
 import characterImages from "../images/characterImages ";
+import Filter from "../../Filter/Filter";
 
 const Characters = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [charactersPerPage] = useState(15);
+  const [activeFilter, setActiveFilter] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,9 +26,32 @@ const Characters = () => {
     fetchData();
   }, []);
 
+  const sortCharacters = (method) => {
+    const sortedData = [...data];
+
+    if (method === "alphabetical") {
+      sortedData.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (method === "chapter") {
+      sortedData.sort((a, b) => a.chapter.localeCompare(b.chapter));
+    }
+
+    setData(sortedData);
+    setCurrentPage(1);
+  };
+
+  const filterByChapter = (chapter) => {
+    setActiveFilter(chapter);
+    setCurrentPage(1);
+  };
+
   const indexOfLastCharacter = currentPage * charactersPerPage;
   const indexOfFirstCharacter = indexOfLastCharacter - charactersPerPage;
-  const currentCharacters = data.slice(
+
+  const filteredCharacters = activeFilter
+    ? data.filter((character) => character.chapter === activeFilter)
+    : data;
+
+  const currentCharacters = filteredCharacters.slice(
     indexOfFirstCharacter,
     indexOfLastCharacter
   );
@@ -44,7 +69,16 @@ const Characters = () => {
       className="characters"
       style={{ margin: "0 auto", width: "50%", fontFamily: "Arial" }}
     >
-      <h1>Character List</h1>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <h1>Character List</h1>
+        <Filter onSort={sortCharacters} onFilterByChapter={filterByChapter} />
+      </div>
       <ul>
         {currentCharacters.map((character) => (
           <li key={character.id} className="characters-data">

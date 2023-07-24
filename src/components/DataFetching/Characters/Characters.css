@@ -6,17 +6,44 @@
 .characters ul {
   display: flex;
   flex-wrap: wrap;
+  gap: 20px;
   justify-content: space-between;
   list-style-type: none;
   padding: 0;
 }
 
+.characters li:hover {
+  border-color: #f31559 !important;
+  box-shadow: 1px 1px 15px 1px #f31559;
+}
+
 .characters li {
-  width: 18%;
-  margin-bottom: 20px;
+  width: 100%;
+  /* box sizing iti zice ca ce dimensiune ii dai tu sa ia in calcul si padding */
+  /* adica 300px card si 20px padding o sa fie 320px fara border box si 300 cu border box - te ajuta sa ai dimensiunile dorite tot timpu */
+  box-sizing: border-box;
+  /* margin-bottom: 20px; */
   border: 2px solid black;
   border-radius: 15px;
   text-align: center;
+}
+
+@media screen and (min-width: 480px) {
+  .characters li {
+    width: calc(50% - 20px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .characters li {
+    width: calc(33% - 20px);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .characters li {
+    width: calc(20% - 20px);
+  }
 }
 
 .pagination {
@@ -37,16 +64,16 @@
 }
 
 .characters-data img {
-  width: 100px;
+  /* width: 100px; */
   height: auto;
-  border-radius: 25px;
-  border: 2px solid white;
+  /* border-radius: 25px; */
+  /* border: 2px solid white; */
 }
 
-.characters-data img:hover {
+/* .characters-data img:hover {
   border-color: #f31559 !important;
   box-shadow: 1px 1px 15px 1px #f31559;
-}
+} */
 
 .pagination .previous-button:hover {
   background-color: #171717;
