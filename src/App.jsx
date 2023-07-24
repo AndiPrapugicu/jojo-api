@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "./components/Navbar/Navbar";
-// import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer/Footer";
 import Stands from "./components/DataFetching/Stands/Stands";
 import Characters from "./components/DataFetching/Characters/Characters";
 import CharacterDetails from "./components/DataFetching/Characters/CharacterDetails";
@@ -37,7 +37,7 @@ function App() {
         <Route path="/characters/:id" element={<CharacterDetails />} />
         <Route path="/stands/:id" element={<StandDetails />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }
