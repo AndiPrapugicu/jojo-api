@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import "./Characters.css";
 import characterImages from "../images/characterImages ";
 import Filter from "../../Filter/Filter";
+import PropTypes from "prop-types";
 
-const Characters = () => {
+const Characters = ({ selectedThemeName }) => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [charactersPerPage] = useState(15);
@@ -66,7 +67,7 @@ const Characters = () => {
 
   return (
     <div
-      className="characters"
+      className={`characters ${selectedThemeName.toLowerCase()}-theme-color`}
       style={{ margin: "0 auto", width: "50%", fontFamily: "Arial" }}
     >
       <div
@@ -77,11 +78,18 @@ const Characters = () => {
         }}
       >
         <h1>Character List</h1>
-        <Filter onSort={sortCharacters} onFilterByChapter={filterByChapter} />
+        <Filter
+          onSort={sortCharacters}
+          onFilterByChapter={filterByChapter}
+          selectedThemeName={selectedThemeName}
+        />
       </div>
       <ul>
         {currentCharacters.map((character) => (
-          <li key={character.id} className="characters-data">
+          <li
+            key={character.id}
+            className={`characters-data ${selectedThemeName.toLowerCase()}-theme`}
+          >
             <p>Name: {character.name}</p>
             <p>
               {characterImages[character.name] && (
@@ -110,14 +118,14 @@ const Characters = () => {
           <button
             onClick={previousPage}
             disabled={currentPage === 1}
-            className="previous-button"
+            className={`previous-button ${selectedThemeName.toLowerCase()}-theme-button`}
           >
             Previous
           </button>
         </div>
         <span className="page-text">Page {currentPage}</span>
         <button
-          className="next-button"
+          className={`next-button ${selectedThemeName.toLowerCase()}-theme-button`}
           onClick={nextPage}
           disabled={indexOfLastCharacter >= data.length}
         >
@@ -126,6 +134,10 @@ const Characters = () => {
       </div>
     </div>
   );
+};
+
+Characters.propTypes = {
+  selectedThemeName: PropTypes.string,
 };
 
 export default Characters;

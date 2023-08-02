@@ -15,3 +15,23 @@
   border-image-slice: 1;
   font-size: 1rem;
 }
+
+.input.vintage-theme-color{
+  background-color: #F7F1E5;
+}
+
+.input.space-theme-color{
+  background-color: #DAFFFB;
+}
+
+.input.gold-theme-color{
+  background-color: #FFF7D4;
+}
+
+.input.purple-theme-color{
+  background-color: #FFECEC;
+}
+
+.input.red-theme-color{
+  background-color: #FFF9C9;
+}

@@ -1,0 +1,177 @@
+.themes {
+  color: white;
+  background-color: var(--themes-bg-color, black);
+  font-family: Arial;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 80vh;
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 12px;
+}
+
+.themes-container {
+  margin: 15px;
+  padding: 8px;
+}
+
+.theme {
+  /* margin: 10px; */
+  /* padding: 6px; */
+  cursor: pointer;
+}
+
+.themes-select {
+  margin-bottom: 10px;
+  padding: 6px;
+}
+
+.themes-build {
+  padding: 6px;
+}
+
+.themes-select:hover {
+  background-color: #2b2b2b;
+  border-radius: 8px;
+}
+
+.themes-build:hover {
+  background-color: #2b2b2b;
+  border-radius: 8px;
+}
+
+.selected-item {
+  border-radius: 12px;
+}
+
+.themes-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.themes-wrapper.selected-bg-color {
+  background-color: var(--themes-bg-color);
+}
+
+.selected-item-wrapper {
+  margin-left: auto;
+  width: 80vw;
+  padding: 8px;
+  border: 1px solid #000;
+  border-radius: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.theme-button {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 130px;
+  color: black;
+  background-color: transparent;
+}
+
+.options-wrapper {
+  font-family: Arial;
+  padding: 8px;
+}
+
+.selected-item {
+  font-family: Arial;
+  font-size: 22px;
+  padding: 8px;
+}
+
+.option {
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+
+.vintage-select button {
+  background-color: #898121;
+  border: 1px solid #898121;
+}
+
+.vintage-select button:hover {
+  color: #4C4B16;
+}
+
+.gold-select button {
+  background-color: #C07F00;
+  border: 1px solid #C07F00;
+}
+
+.gold-select button:hover {
+  color: #FFD95A;
+}
+
+.space-select button {
+  background-color: #64CCC5;
+  border: 1px solid #64CCC5;
+}
+
+.space-select button:hover {
+  color: #176B87;
+}
+
+.purple-select button {
+  background-color: #4C0033;
+  border: 1px solid #4C0033;
+}
+
+.purple-select button:hover{
+  color: #E80F88;
+}
+
+.red-select button {
+  background-color: #C51605;
+  border: 1px solid #C51605;
+}
+
+.red-select button:hover{
+  color: #FD8D14;
+}
+
+.gold-theme:hover{
+  background-color: #FFD95A;
+}
+
+.vintage-theme:hover{
+  background-color: #898121;
+}
+
+.space-theme:hover{
+  background-color: #176B87;
+}
+
+.purple-theme:hover{
+  background-color: #AF0171;
+}
+
+.red-theme:hover{
+  background-color: #F15A59;
+}
+
+.vintage-theme-color {
+  --app-background-color: #F7F1E5;
+}
+
+.gold-theme-color {
+  --app-background-color: #FFF7D4;
+}
+
+.space-theme-color{
+  --app-background-color: #DAFFFB;
+}
+
+.purple-theme-color{
+  --app-background-color: #FFECEC;
+}
+
+.red-theme-color{
+  --app-background-color: #FFF9C9;
+}

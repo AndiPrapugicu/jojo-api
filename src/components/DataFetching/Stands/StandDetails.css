@@ -8,3 +8,51 @@
 .stand-details {
   margin-top: 10px;
 }
+
+
+.stand-img.default-theme{
+  border: 1px solid #00ff00
+}
+
+.stand-img.vintage-theme{
+  border: 1px solid #898121
+}
+
+.stand-img.red-theme{
+  border: 1px solid #DC0000;
+}
+
+.stand-img.gold-theme{
+  border: 1px solid #C07F00;
+}
+
+.stand-img.space-theme{
+  border: 1px solid #64CCC5;
+}
+
+.stand-img.purple-theme{
+  border: 1px solid #E80F88;
+}
+
+.vintage-theme.detail{
+  border: 2px solid #898121;
+}
+
+.gold-theme.detail{
+  border: 2px solid #C07F00;
+}
+
+.space-theme.detail{
+  border: 2px solid #64CCC5;
+  box-shadow: 1p 1px 15px 1px #64CCC5;
+}
+
+.purple-theme.detail{
+  border: 2px solid #E80F88;
+  box-shadow: 1px 1px 15px 1px #E80F88;
+}
+
+.red-theme.detail {
+  border: 2px solid #DC0000;
+  box-shadow: 1px 1px 15px 1px #DC0000;
+}

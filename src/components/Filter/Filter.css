@@ -40,3 +40,28 @@
 .filter-dropdown-button {
   font-size: 12px;
 }
+
+.filter-button.vintage-theme{
+  background-color: transparent;
+  border: 1px solid #898121;
+}
+
+.filter-button.gold-theme{
+  background-color: transparent;
+  border: 1px solid gold;
+}
+
+.filter-button.space-theme{
+  background-color: transparent;
+  border: 1px solid #64CCC5;
+}
+
+.filter-button.purple-theme{
+  background-color: transparent;
+  border: 1px solid #E80F88;
+}
+
+.filter-button.red-theme{
+  background-color: transparent;
+  border: 1px solid #850000;
+}

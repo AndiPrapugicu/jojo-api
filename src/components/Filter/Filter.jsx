@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import PropTypes from "prop-types";
 
-function Filter({ onSort }) {
+function Filter({ onSort, selectedThemeName }) {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   const handleFilterClick = () => {
@@ -23,7 +23,10 @@ function Filter({ onSort }) {
   return (
     <div className="filter">
       <div className="filter-button-container">
-        <button className="filter-button" onClick={handleFilterClick}>
+        <button
+          className={`filter-button ${selectedThemeName.toLowerCase()}-theme`}
+          onClick={handleFilterClick}
+        >
           <AiOutlineUnorderedList />
           Filter
         </button>
@@ -51,6 +54,7 @@ function Filter({ onSort }) {
 Filter.propTypes = {
   onSort: PropTypes.func.isRequired,
   onFilterByChapter: PropTypes.func.isRequired,
+  selectedThemeName: PropTypes.string,
 };
 
 export default Filter;

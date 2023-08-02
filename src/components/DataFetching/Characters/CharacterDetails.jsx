@@ -3,8 +3,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import characterImages from "../images/characterImages ";
 import "./CharacterDetails.css";
+import PropTypes from "prop-types";
 
-const CharacterDetail = () => {
+const CharacterDetail = ({ selectedThemeName }) => {
   const { id } = useParams();
   const [characterDetails, setCharacterDetails] = useState(null);
 
@@ -46,10 +47,11 @@ const CharacterDetail = () => {
           height: "auto",
           margin: "0 30px",
           borderRadius: "15px",
-          border: "1px solid #f31559",
+          // border: "1px solid #f31559",
           boxShadow: "1px 1px 15px 1px",
           background: "white",
         }}
+        className={`char-img ${selectedThemeName.toLowerCase()}-theme`}
       />
       <div
         style={{
@@ -57,7 +59,7 @@ const CharacterDetail = () => {
           fontFamily: "Arial",
           background: "white",
         }}
-        className="details"
+        className={`details ${selectedThemeName.toLowerCase()}-theme`}
       >
         <h1>{characterDetails.name}&apos;s Info</h1>
         <p>Name: {characterDetails.name}</p>
@@ -70,6 +72,10 @@ const CharacterDetail = () => {
       </div>
     </div>
   );
+};
+
+CharacterDetail.propTypes = {
+  selectedThemeName: PropTypes.string,
 };
 
 export default CharacterDetail;

@@ -32,3 +32,61 @@
   border: 2px solid #00ff00;
   box-shadow: 0 5px 15px 5px rgba(0, 255, 0, 0.75);
 }
+
+.space-theme.character-image:hover{
+  border: 2px solid #64CCC5;
+  box-shadow: 0 5px 15px 5px #64CCC5;
+}
+
+.space-theme.stand-image:hover{
+  border: 2px solid #DAFFFB;
+  box-shadow: 0 5px 15px 5px #DAFFFB;
+}
+
+.vintage-theme.character-image:hover{
+  border: 2px solid #E7B10A;
+  box-shadow: 0 5px 15px 5px #E7B10A;
+}
+
+.vintage-theme.stand-image:hover{
+  border: 2px solid #F7F1E5;
+  box-shadow: 0 5px 15px 5px #F7F1E5;
+}
+
+.gold-theme.character-image:hover{
+  border: 2px solid #FFD95A;
+  box-shadow: 0 5px 15px 5px #FFD95A;
+}
+
+.gold-theme.stand-image:hover{
+  border: 2px solid #E38B29;
+  box-shadow: 0 5px 15px 5px #E38B29;
+}
+
+.purple-theme.character-image:hover{
+  border: 2px solid #E80F88;
+  box-shadow: 0 5px 15px 5px #E80F88;
+}
+
+.purple-theme.stand-image:hover{
+  border: 2px solid #6528F7;
+  box-shadow: 0 5px 15px 5px #6528F7;
+}
+
+.red-theme.character-image:hover{
+  border: 2px solid #C51605;
+  box-shadow: 0 5px 15px 5px #C51605;
+}
+
+.red-theme.stand-image:hover{
+  border: 2px solid #F1C27B;
+  box-shadow: 0 5px 15px 5px #F1C27B;
+}
+
+.home.default-theme{
+  background-color: #f5f5f5;
+}
+
+.home.vintage-theme-color{
+  background-color: #F7F1E5;
+}

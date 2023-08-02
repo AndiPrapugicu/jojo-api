@@ -44,10 +44,10 @@
   border: 2px solid white;
 }
 
-.stands-data img:hover {
+/* .stands-data img:hover {
   border-color: #00ff00 !important;
   box-shadow: 1px 1px 15px 1px #00ff00;
-}
+} */
 
 .pagination .stand-previous-button:hover {
   background-color: #171717;
@@ -70,4 +70,179 @@
 
 .stands {
   flex: 1;
+}
+
+.stands-data.vintage-theme{
+  border: 1px solid #E7B10A;
+}
+
+.vintage-theme.stands-data:hover{
+  background-color: transparent;
+}
+
+.vintage-theme.stands-data:hover {
+  border-color: #E7B10A !important;
+  box-shadow: 1px 1px 15px 1px #E7B10A;
+}
+
+.stands-data.gold-theme{
+  border: 1px solid #E38B29;
+}
+
+.gold-theme.stands-data:hover{
+  background-color: transparent;
+}
+
+.gold-theme.stands-data:hover {
+  border-color: #E38B29 !important;
+  box-shadow: 1px 1px 15px 1px #E38B29;
+}
+
+.stands-data.space-theme{
+  border: 1px solid #DAFFFB;
+}
+
+.space-theme.stands-data:hover{
+  background-color: transparent;
+}
+
+.space-theme.stands-data:hover {
+  border-color: #DAFFFB !important;
+  box-shadow: 1px 1px 15px 1px #DAFFFB;
+}
+
+
+.stands-data.purple-theme{
+  border: 1px solid #6528F7;
+}
+
+.purple-theme.stands-data:hover{
+  background-color: transparent;
+}
+
+.purple-theme.stands-data:hover {
+  border-color: #6528F7 !important;
+  box-shadow: 1px 1px 15px 1px #6528F7;
+}
+
+.stands-data.red-theme{
+  border: 1px solid #F1C27B;
+}
+
+.red-theme.stands-data:hover{
+  background-color: transparent;
+}
+
+.red-theme.stands-data:hover {
+  border-color: #F1C27B !important;
+  box-shadow: 1px 1px 15px 1px #F1C27B;
+}
+
+.red-theme.stand-image:hover {
+  background-color: transparent;
+}
+
+.space-theme .stand-image:hover{
+  background-color: transparent;
+}
+.gold-theme .stand-image:hover{
+  background-color: transparent;
+}
+
+.vintage-theme .stand-image:hover{
+  background-color: transparent;
+}
+
+.default-theme .stand-image:hover{
+  background-color: transparent;
+}
+
+.purple-theme .stand-image:hover{
+  background-color: transparent;
+}
+
+.stands-data.default-theme{
+  border: 1px solid #00ff00;
+}
+
+.default-theme.stands-data:hover{
+  background-color: transparent;
+}
+
+.default-theme.stands-data:hover {
+  border-color: #00ff00 !important;
+  box-shadow: 1px 1px 15px 1px #00ff00;
+}
+
+
+// butoane ceva //
+
+.vintage-theme-button.stand-next-button:hover{
+  background-color: #E7B10A;
+  color: #F7F1E5;
+  border: 1px solid transparent;
+  box-shadow: 1px 1px 15px 1px #B5C99A
+}
+
+.vintage-theme-button.stand-previous-button:hover{
+  background-color: #E7B10A;
+  color: #C07F00;
+  border: 1px solid #C07F00;
+  box-shadow: 1px 1px 15px 1px #C07F00;
+}
+
+.gold-theme-button.stand-next-button:hover{
+  color: #F7F1E5;
+  background-color: #FFD03A;
+  border: 1px solid transparent;
+  box-shadow: 1px 1px 15px 1px #FFD95A;
+}
+
+.gold-theme-button.stand-previous-button:hover{
+  color: #F7F1E5;
+  background-color: gold;
+  border: 1px solid transparent;
+  box-shadow: 1px 1px 15px 1px white;
+}
+
+.space-theme-button.stand-next-button:hover{
+  color: #F7F1E5;
+  background-color: #176B87;
+  border: 1px solid transparent;
+  box-shadow: 1px 1px 15px 1px #64CCC5;
+}
+
+.space-theme-button.stand-previous-button:hover{
+  color: #F7F1E5;
+  background-color: #64CCC5;
+  border: 1px solid transparent;
+  box-shadow: 1px 1px 15px 1px #DAFFFB;
+}
+
+.purple-theme-button.stand-next-button:hover{
+  color:#F7F1E5;
+  background-color: #E80F88;
+  border: 1px solid transparent;
+  box-shadow: 1px 1px 15px 1px #E80F88;
+}
+
+.purple-theme-button.stand-previous-button:hover{
+  color: #F7F1E5;
+  background-color: #F11A7B;
+  border: 1px solid transparent;
+  box-shadow: 1px 1px 15px 1px #FB2576;
+}
+
+.red-theme-button.stand-next-button:hover{
+  color: #ED2B2A;
+  background-color: #FFE4A7;
+  border: 1px solid #FD8D14;
+  box-shadow: 1px 1px 15px 1px #FD8D14;
+}
+
+.red-theme-button.stand-previous-button:hover{
+  color: red;
+  background-color: #FFFAD7;
+  border: 1px solid #F86F03;
+  box-shadow: 1px 1px 15px 1px #F86F03;
 }

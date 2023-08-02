@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import "./Stands.css";
 import standImages from "../images/standImages";
 import StandFilter from "../../Filter/StandFilter";
+import PropTypes from "prop-types";
 
-const Stands = () => {
+const Stands = ({ selectedThemeName }) => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [standsPerPage] = useState(15);
@@ -66,7 +67,10 @@ const Stands = () => {
       </div>
       <ul>
         {currentStands.map((stand) => (
-          <li key={stand.id} className="stands-data">
+          <li
+            key={stand.id}
+            className={`stands-data ${selectedThemeName.toLowerCase()}-theme`}
+          >
             <p>Name: {stand.name}</p>
             <Link to={`/stands/${stand.id}`}>
               <img
@@ -79,7 +83,7 @@ const Stands = () => {
                   border: "2px solid white",
                   transition: "border-color 0.3s ease",
                 }}
-                className="stand-image"
+                className={`stand-image ${selectedThemeName.toLowerCase()}-theme`}
               />
             </Link>
             <p>Chapter: {stand.chapter}</p>
@@ -91,7 +95,7 @@ const Stands = () => {
           <button
             onClick={previousPage}
             disabled={currentPage === 1}
-            className="stand-previous-button"
+            className={`stand-previous-button ${selectedThemeName.toLowerCase()}-theme-button`}
           >
             Previous
           </button>
@@ -101,7 +105,7 @@ const Stands = () => {
           <button
             onClick={nextPage}
             disabled={indexOfLastStand >= data.length}
-            className="stand-next-button"
+            className={`stand-next-button ${selectedThemeName.toLowerCase()}-theme-button`}
           >
             Next
           </button>
@@ -109,6 +113,10 @@ const Stands = () => {
       </div>
     </div>
   );
+};
+
+Stands.propTypes = {
+  selectedThemeName: PropTypes.string,
 };
 
 export default Stands;
