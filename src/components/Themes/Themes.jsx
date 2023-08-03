@@ -1,11 +1,15 @@
 import { useState } from "react";
 import "./Themes.css";
 import PropTypes from "prop-types";
+import { SketchPicker } from "react-color";
 
 function Themes({
   handleThemeSelectClick,
   selectedThemeColor,
   selectedThemeName,
+  navbarColor,
+  setNavbarColor,
+  setBackgroundColor,
 }) {
   const themes = [
     {
@@ -47,15 +51,6 @@ function Themes({
       name: "Create your own theme",
       options: [
         <div key="navbar" className="navbar-create">
-          <span>Navbar</span>
-          <button
-            className="theme-button"
-            onClick={() => handleThemeColorChange("")}
-          >
-            Change Color
-          </button>
-        </div>,
-        <div key="body" className="body-create">
           <span>Body</span>
           <button
             className="theme-button"
@@ -64,11 +59,11 @@ function Themes({
             Change Color
           </button>
         </div>,
-        <div key="footer" className="footer-create">
-          <span>Footer</span>
+        <div key="background" className="background-create">
+          <span>Background</span>
           <button
             className="theme-button"
-            onClick={() => handleThemeColorChange("")}
+            onClick={() => handleThemeColorChange("background")}
           >
             Change Color
           </button>
@@ -79,16 +74,30 @@ function Themes({
 
   const [selectedTheme, setSelectedTheme] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
+  const [isColorPickerOpen, setIsColorPickerOpen] = useState(false);
+  const [colorPickerTheme] = useState(selectedThemeColor);
+  const [tempThemeColor, setTempThemeColor] = useState("#000");
+  const [showNavbarColorPickerButton, setShowNavbarColorPickerButton] =
+    useState(false);
+  const initialBackgroundColor =
+    localStorage.getItem("backgroundColor") || "#ffffff";
+  const [backgroundSectionColor, setBackgroundSectionColor] = useState(
+    initialBackgroundColor
+  );
 
   const handleOptionSelectClick = (option) => {
     setSelectedOption(option);
+    if (option === "navbar-create") {
+      setShowNavbarColorPickerButton(true);
+    } else {
+      setShowNavbarColorPickerButton(false);
+    }
   };
 
-  const handleThemeColorChange = (color) => {
+  const handleThemeColorChange = () => {
     setSelectedOption("");
     setSelectedTheme("Create your own theme");
-    handleThemeSelectClick("Navbar", color);
-    handleFooterColorChange(color);
+    setIsColorPickerOpen(true);
   };
 
   const handleFooterColorChange = (color) => {
@@ -99,18 +108,55 @@ function Themes({
   };
 
   const handleThemeSelect = (theme, themeColor) => {
-    console.log("Selected Theme:", theme);
-    console.log("Theme Color:", themeColor);
     setSelectedTheme(theme);
     setSelectedOption("");
     handleThemeSelectClick(theme, themeColor);
   };
 
+  const handleColorPickerChange = (color) => {
+    setTempThemeColor(color.hex);
+  };
+
+  const handleColorPickerClose = () => {
+    setIsColorPickerOpen(false);
+    if (colorPickerTheme) {
+      handleThemeSelectClick(colorPickerTheme, tempThemeColor);
+      handleFooterColorChange(tempThemeColor);
+      if (colorPickerTheme === "navbar") {
+        setNavbarColor(tempThemeColor);
+      } else if (colorPickerTheme === "background") {
+        const backgroundColorWithOpacity = `${tempThemeColor}33`;
+        setBackgroundColor(backgroundColorWithOpacity);
+        localStorage.setItem("selectedThemeColor", "background");
+        localStorage.setItem("selectedThemeName", "Create your own theme");
+      }
+    }
+  };
+
+  const handleNavbarColorChange = (color) => {
+    setNavbarColor(color.hex);
+  };
+
   const themesStyle = { backgroundColor: selectedThemeColor };
+
+  const handleSelectNavbarColor = () => {
+    setIsColorPickerOpen(true);
+    setSelectedOption("navbar-create");
+    setShowNavbarColorPickerButton(true);
+  };
 
   return (
     <div className="themes-wrapper">
-      <div className="themes" style={themesStyle}>
+      <div
+        className="themes"
+        style={{
+          themesStyle,
+          backgroundColor:
+            selectedThemeColor === "background"
+              ? backgroundSectionColor
+              : selectedThemeColor,
+        }}
+      >
         <div className="themes-container">
           <div>Choose a Theme</div>
           <div className="theme">
@@ -148,6 +194,42 @@ function Themes({
                     {option}
                   </div>
                 ))}
+              {isColorPickerOpen && (
+                <div className="color-picker-modal">
+                  <SketchPicker
+                    color={tempThemeColor}
+                    onChange={handleColorPickerChange}
+                  />
+                  <div className="button-container">
+                    <button onClick={handleColorPickerClose}>Close</button>
+                    <button
+                      className="select-color-button"
+                      onClick={handleColorPickerClose}
+                    >
+                      Select Color
+                    </button>
+                  </div>
+                  {showNavbarColorPickerButton && (
+                    <button onClick={handleSelectNavbarColor}>
+                      Select Color
+                    </button>
+                  )}
+                </div>
+              )}
+              {selectedOption === "navbar-create" && (
+                <div className="color-picker-modal">
+                  <SketchPicker
+                    color={navbarColor}
+                    onChange={handleNavbarColorChange}
+                  />
+                  {showNavbarColorPickerButton && (
+                    <button onClick={handleSelectNavbarColor}>
+                      Select Color
+                    </button>
+                  )}
+                  <button onClick={handleColorPickerClose}>Close</button>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -160,6 +242,9 @@ Themes.propTypes = {
   handleThemeSelectClick: PropTypes.func.isRequired,
   selectedThemeColor: PropTypes.string.isRequired,
   selectedThemeName: PropTypes.string.isRequired,
+  navbarColor: PropTypes.string.isRequired,
+  setNavbarColor: PropTypes.func.isRequired,
+  setBackgroundColor: PropTypes.func.isRequired,
 };
 
 export default Themes;

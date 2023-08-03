@@ -21,12 +21,10 @@
 
 .filter-dropdown {
   position: absolute;
-  background-color: #f9f9f9;
   border-radius: 4px;
 }
 
 .filter-dropdown button {
-  /* position: absolute; */
   justify-content: center;
   align-items: center;
   background-color: #f5f5f5;
@@ -41,27 +39,47 @@
   font-size: 12px;
 }
 
-.filter-button.vintage-theme{
+.filter-button.vintage-theme {
   background-color: transparent;
   border: 1px solid #898121;
 }
 
-.filter-button.gold-theme{
+.vintage-theme.filter-button:hover {
+  background-color: #898121;
+  color: white;
+  border: 1px solid #898121;
+}
+
+.filter-button.gold-theme {
   background-color: transparent;
   border: 1px solid gold;
 }
 
-.filter-button.space-theme{
+.filter-button.space-theme {
   background-color: transparent;
-  border: 1px solid #64CCC5;
+  border: 1px solid #64ccc5;
 }
 
-.filter-button.purple-theme{
-  background-color: transparent;
-  border: 1px solid #E80F88;
+.space-theme.filter-button:hover {
+  color: white;
 }
 
-.filter-button.red-theme{
+.filter-button.purple-theme {
+  background-color: transparent;
+  border: 1px solid #e80f88;
+}
+
+.purple-theme.filter-button:hover {
+  color: white;
+}
+
+.filter-button.red-theme {
   background-color: transparent;
   border: 1px solid #850000;
+}
+
+.red-theme.filter-button:hover {
+  background-color: #f1c27b;
+  border: 1px solid #f1c27b;
+  color: white;
 }

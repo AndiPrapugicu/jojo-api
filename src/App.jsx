@@ -19,6 +19,8 @@ function App() {
   const [selectedThemeColor, setSelectedThemeColor] =
     useState(initialThemeColor);
   const [selectedThemeName, setSelectedThemeName] = useState(initialThemeName);
+  const [navbarColor, setNavbarColor] = useState("");
+  const [backgroundColor, setBackgroundColor] = useState("#000");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,11 +42,17 @@ function App() {
     setSelectedThemeColor(themeColor);
     localStorage.setItem("selectedThemeColor", themeColor);
     localStorage.setItem("selectedThemeName", themeName);
+    setNavbarColor(themeName === "Create your own theme" ? themeColor : "");
+  };
+
+  const handleBackgroundColorChange = (color) => {
+    setBackgroundColor(color);
   };
 
   return (
     <BrowserRouter>
       <div
+        id="root"
         className={`app ${selectedThemeName.toLowerCase()}-theme-color`}
         style={{ backgroundColor: `var(--app-background-color)` }}
       >
@@ -53,41 +61,50 @@ function App() {
           selectedThemeColor={selectedThemeColor}
           handleThemeSelectClick={handleThemeSelectClick}
           selectedThemeName={selectedThemeName}
+          navbarColor={navbarColor}
+          setNavbarColor={setNavbarColor}
         />
-        <Routes>
-          <Route
-            path="/"
-            selectedThemeColor={selectedThemeColor}
-            element={<Home selectedThemeName={selectedThemeName} />}
-          />
-          <Route
-            path="/stands"
-            element={<Stands selectedThemeName={selectedThemeName} />}
-          />
-          <Route
-            path="/characters"
-            element={<Characters selectedThemeName={selectedThemeName} />}
-          />
-          <Route
-            path="/characters/:id"
-            element={<CharacterDetails selectedThemeName={selectedThemeName} />}
-          />
-          <Route
-            path="/stands/:id"
-            element={<StandDetails selectedThemeName={selectedThemeName} />}
-          />
-          <Route path="/settings" element={<Settings />} />
-          <Route
-            path="/themes"
-            element={
-              <Themes
-                handleThemeSelectClick={handleThemeSelectClick}
-                selectedThemeColor={selectedThemeColor}
-                selectedThemeName={selectedThemeName}
-              />
-            }
-          />
-        </Routes>
+        <div className="app-content">
+          <Routes>
+            <Route
+              path="/"
+              selectedThemeColor={selectedThemeColor}
+              element={<Home selectedThemeName={selectedThemeName} />}
+            />
+            <Route
+              path="/stands"
+              element={<Stands selectedThemeName={selectedThemeName} />}
+            />
+            <Route
+              path="/characters"
+              element={<Characters selectedThemeName={selectedThemeName} />}
+            />
+            <Route
+              path="/characters/:id"
+              element={
+                <CharacterDetails selectedThemeName={selectedThemeName} />
+              }
+            />
+            <Route
+              path="/stands/:id"
+              element={<StandDetails selectedThemeName={selectedThemeName} />}
+            />
+            <Route path="/settings" element={<Settings />} />
+            <Route
+              path="/themes"
+              element={
+                <Themes
+                  handleThemeSelectClick={handleThemeSelectClick}
+                  selectedThemeColor={selectedThemeColor}
+                  selectedThemeName={selectedThemeName}
+                  navbarColor={navbarColor}
+                  setNavbarColor={setNavbarColor}
+                  setBackgroundColor={handleBackgroundColorChange}
+                />
+              }
+            />
+          </Routes>
+        </div>
         <Footer selectedThemeColor={selectedThemeColor} />
       </div>
     </BrowserRouter>

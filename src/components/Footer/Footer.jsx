@@ -34,7 +34,7 @@ const Footer = ({ selectedThemeColor }) => {
 };
 
 Footer.propTypes = {
-  selectedThemeColor: PropTypes.string,
+  selectedThemeColor: PropTypes.string.isRequired,
 };
 
 export default Footer;

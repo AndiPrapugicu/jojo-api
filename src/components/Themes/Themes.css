@@ -90,6 +90,9 @@
   cursor: pointer;
 }
 
+.default-select button:hover {
+  color: #f31559;
+}
 
 .vintage-select button {
   background-color: #898121;
@@ -97,81 +100,112 @@
 }
 
 .vintage-select button:hover {
-  color: #4C4B16;
+  color: #e7b10a;
 }
 
 .gold-select button {
-  background-color: #C07F00;
-  border: 1px solid #C07F00;
+  background-color: #d36b00;
+  border: 1px solid #d36b00;
 }
 
 .gold-select button:hover {
-  color: #FFD95A;
+  color: #ffd95a;
 }
 
 .space-select button {
-  background-color: #64CCC5;
-  border: 1px solid #64CCC5;
+  background-color: #001c30;
+  border: 1px solid #001c30;
 }
 
 .space-select button:hover {
-  color: #176B87;
+  color: #64ccc5;
 }
 
 .purple-select button {
-  background-color: #4C0033;
-  border: 1px solid #4C0033;
+  background-color: #790252;
+  border: 1px solid #790252;
 }
 
-.purple-select button:hover{
-  color: #E80F88;
+.purple-select button:hover {
+  color: #e80f88;
 }
 
 .red-select button {
-  background-color: #C51605;
-  border: 1px solid #C51605;
+  background-color: #850000;
+  border: 1px solid #850000;
 }
 
-.red-select button:hover{
-  color: #FD8D14;
+.red-select button:hover {
+  color: #fd8d14;
 }
 
-.gold-theme:hover{
-  background-color: #FFD95A;
+.gold-theme:hover {
+  background-color: #ffd95a;
 }
 
-.vintage-theme:hover{
+.vintage-theme:hover {
   background-color: #898121;
 }
 
-.space-theme:hover{
-  background-color: #176B87;
+.space-theme:hover {
+  background-color: #176b87;
 }
 
-.purple-theme:hover{
-  background-color: #AF0171;
+.purple-theme:hover {
+  background-color: #af0171;
 }
 
-.red-theme:hover{
-  background-color: #F15A59;
+.red-theme:hover {
+  background-color: #f15a59;
 }
 
 .vintage-theme-color {
-  --app-background-color: #F7F1E5;
+  --app-background-color: #f7f1e5;
 }
 
 .gold-theme-color {
-  --app-background-color: #FFF7D4;
+  --app-background-color: #fff7d4;
 }
 
-.space-theme-color{
-  --app-background-color: #DAFFFB;
+.space-theme-color {
+  --app-background-color: #dafffb;
 }
 
-.purple-theme-color{
-  --app-background-color: #FFECEC;
+.purple-theme-color {
+  --app-background-color: #ffecec;
 }
 
-.red-theme-color{
-  --app-background-color: #FFF9C9;
+.red-theme-color {
+  --app-background-color: #fff9c9;
+}
+
+.color-picker-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.color-picker-modal button {
+  margin-top: 10px;
+}
+
+.chrome-picker {
+  display: absolute;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+body {
+  background-color: var(--app-background-color);
 }

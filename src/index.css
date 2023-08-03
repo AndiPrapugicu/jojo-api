@@ -5,19 +5,22 @@ body {
   padding-top: 0;
   height: 100vh;
   --default-theme-color: #ffffff;
-  --vintage-theme-color: #F7F1E5;
-  --gold-theme-color: #FFF7D4;
-  --space-theme-color: #DAFFFB;
-  --purple-theme-color: #FFECEC;
-  --red-theme-color: #FFF9C9;
+  --vintage-theme-color: #f7f1e5;
+  --gold-theme-color: #fff7d4;
+  --space-theme-color: #dafffb;
+  --purple-theme-color: #ffecec;
+  --red-theme-color: #fff9c9;
+  --app-background-color: #ffffff; /* Valoarea implicită pentru background-ul body-ului */
+  background-color: var(--app-background-color);
 }
 
 :root {
-  --selected-theme-color: ""; 
+  --selected-theme-color: "";
   --default-theme-color: #ffffff;
-  --vintage-theme-color: #F7F1E5;
-  --gold-theme-color: #FFF7D4;
-  --space-theme-color: #DAFFFB;
-  --purple-theme-color: #FFECEC;
-  --red-theme-color: #FFF9C9;
+  --vintage-theme-color: #f7f1e5;
+  --gold-theme-color: #fff7d4;
+  --space-theme-color: #dafffb;
+  --purple-theme-color: #ffecec;
+  --red-theme-color: #fff9c9;
+  background-color: var(--app-background-color);
 }

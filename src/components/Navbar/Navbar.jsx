@@ -10,6 +10,8 @@ const Navbar = ({
   selectedThemeName,
   selectedThemeColor,
   handleThemeSelectClick,
+  navbarColor,
+  setNavbarColor,
 }) => {
   console.log(selectedThemeName);
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ const Navbar = ({
 
   return (
     <div
-      className={`nav ${selectedThemeColor?.toLowerCase()}-theme`}
+      className={`nav ${navbarColor?.toLowerCase()}-theme`}
       style={{ backgroundColor: selectedThemeColor }}
     >
       <a className="autohublogo" href="/">
@@ -56,6 +58,8 @@ const Navbar = ({
             handleThemeSelectClick(themeName, themeColor);
           }}
           selectedThemeName={selectedThemeName}
+          setNavbarColor={setNavbarColor} // Transmiterea funcției setNavbarColor către Dropdown
+          navbarColor={navbarColor} // Transmiterea culorii Navbar-ului către Dropdown
         />
       </div>
     </div>
@@ -66,6 +70,8 @@ Navbar.propTypes = {
   selectedThemeColor: PropTypes.string.isRequired,
   selectedThemeName: PropTypes.string,
   handleThemeSelectClick: PropTypes.func.isRequired,
+  navbarColor: PropTypes.string.isRequired, // Adăugăm validarea pentru prop-ul navbarColor
+  setNavbarColor: PropTypes.func.isRequired, // Modificăm tipul prop-ului setNavbarColor în funcție
 };
 
 export default Navbar;
