@@ -4,23 +4,88 @@ body {
   padding: 0;
   padding-top: 0;
   height: 100vh;
+
+  /* Default */
   --default-theme-color: #ffffff;
+  --default-theme-color-base: ;
+  --default-border: ;
+  --default-button: ;
+
+  /* Vintage */
   --vintage-theme-color: #f7f1e5;
+  --vintage-theme-color-base: #4c4b16;
+  --vintage-border: #898121;
+  --vintage-button: #898121;
+
+  /*Gold */
   --gold-theme-color: #fff7d4;
+  --gold-theme-color-base: #d36b00;
+  --gold-border: #ffc93c;
+  --gold-button: #ffc93c;
+
+  /* Space */
   --space-theme-color: #dafffb;
+  --space-theme-color-base: #001c30;
+  --space-border: #176b87;
+  --space-button: #176b87;
+
+  /* Purple */
   --purple-theme-color: #ffecec;
+  --purple-theme-color-base: #790252;
+  --purple-border: #af0171;
+  --purple-button: #af0171;
+
+  /* Red */
   --red-theme-color: #fff9c9;
-  --app-background-color: #ffffff; /* Valoarea implicită pentru background-ul body-ului */
-  background-color: var(--app-background-color);
+  --red-theme-color-base: #850000;
+  --red-border: #f1c27b;
+  --red-button: #f1c27b;
+
+  /* Other */
+  --app-background-color: #ffffff;
+  --body-background-color: #ffffff;
+  background-color: var(--body-background-color);
 }
 
 :root {
   --selected-theme-color: "";
+
+  /* 
+  COLORS
+  */
+  /* COLORS */
   --default-theme-color: #ffffff;
   --vintage-theme-color: #f7f1e5;
   --gold-theme-color: #fff7d4;
   --space-theme-color: #dafffb;
   --purple-theme-color: #ffecec;
   --red-theme-color: #fff9c9;
-  background-color: var(--app-background-color);
+  --app-content-bg-color: white;
+  /* background-color: var(--app-background-color); */
+}
+
+.app-content {
+  background: var(--app-content-bg-color);
+}
+
+@media screen and (min-width: 280px) {
+  .body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+  }
 }

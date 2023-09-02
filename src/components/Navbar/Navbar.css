@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--navbar-bg-color, rgb(17, 16, 16));
+  background-color: var(--app-background-color, rgb(17, 16, 16));
   --characters-button-bg-color: #1c1c1c;
   padding: 16px 88px;
   color: white;
@@ -85,6 +85,11 @@ button {
 
 .search {
   color: black;
+}
+
+.highlight--vintage {
+  background-color: var(--vintage-button);
+  border: 1px solid var(--vintage-border);
 }
 
 .space-theme-button {
@@ -182,7 +187,27 @@ button {
   box-shadow: 1px 1px 15px 1px #f86f03;
 }
 
-/* @media screen and (min-width: 480px) {
+@media screen and (max-width: 1600px) {
   .nav {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
   }
-} */
+
+  .jojologo {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .buttons {
+    margin-top: 10px;
+  }
+}

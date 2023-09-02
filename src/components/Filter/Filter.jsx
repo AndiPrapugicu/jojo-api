@@ -2,9 +2,11 @@ import "./Filter.css";
 import { useState } from "react";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import PropTypes from "prop-types";
+import useHighlightColor from "../../utils/useHighlightColor";
 
 function Filter({ onSort, selectedThemeName }) {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const highlightColor = useHighlightColor();
 
   const handleFilterClick = () => {
     setIsDropdownVisible(!isDropdownVisible);
@@ -24,7 +26,7 @@ function Filter({ onSort, selectedThemeName }) {
     <div className="filter">
       <div className="filter-button-container">
         <button
-          className={`filter-button ${selectedThemeName.toLowerCase()}-theme`}
+          className={`filter-button ${highlightColor}-theme`}
           onClick={handleFilterClick}
         >
           <AiOutlineUnorderedList />

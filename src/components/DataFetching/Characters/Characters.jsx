@@ -5,12 +5,14 @@ import "./Characters.css";
 import characterImages from "../images/characterImages ";
 import Filter from "../../Filter/Filter";
 import PropTypes from "prop-types";
+import useHighlightColor from "../../../utils/useHighlightColor";
 
 const Characters = ({ selectedThemeName }) => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [charactersPerPage] = useState(15);
   const [activeFilter, setActiveFilter] = useState(null);
+  const highlightColor = useHighlightColor();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -82,6 +84,7 @@ const Characters = ({ selectedThemeName }) => {
           onSort={sortCharacters}
           onFilterByChapter={filterByChapter}
           selectedThemeName={selectedThemeName}
+          highlightColor={highlightColor}
         />
       </div>
       <ul>
@@ -118,19 +121,19 @@ const Characters = ({ selectedThemeName }) => {
           <button
             onClick={previousPage}
             disabled={currentPage === 1}
-            className={`previous-button ${selectedThemeName.toLowerCase()}-theme-button`}
+            className={`previous-button ${highlightColor}-theme-button`}
           >
             Previous
           </button>
+          <span className="page-text">Page {currentPage}</span>
+          <button
+            className={`next-button ${highlightColor}-theme-button`}
+            onClick={nextPage}
+            disabled={indexOfLastCharacter >= data.length}
+          >
+            Next
+          </button>
         </div>
-        <span className="page-text">Page {currentPage}</span>
-        <button
-          className={`next-button ${selectedThemeName.toLowerCase()}-theme-button`}
-          onClick={nextPage}
-          disabled={indexOfLastCharacter >= data.length}
-        >
-          Next
-        </button>
       </div>
     </div>
   );
@@ -138,6 +141,7 @@ const Characters = ({ selectedThemeName }) => {
 
 Characters.propTypes = {
   selectedThemeName: PropTypes.string,
+  highlightColor: PropTypes.string,
 };
 
 export default Characters;

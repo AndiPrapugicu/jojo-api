@@ -2,6 +2,9 @@ import { useState } from "react";
 import "./Themes.css";
 import PropTypes from "prop-types";
 import { SketchPicker } from "react-color";
+import CreateYourOwnTheme from "./CreateYourOwnTheme";
+import { changeBgColor, changeThemeColor } from "../../utils/functions";
+import { MdOutlineColorLens } from "react-icons/md";
 
 function Themes({
   handleThemeSelectClick,
@@ -9,39 +12,88 @@ function Themes({
   selectedThemeName,
   navbarColor,
   setNavbarColor,
-  setBackgroundColor,
+  setSelectedBackgroundColor,
 }) {
+  const changeAppTheming = (type, themeColor, bgColor) => {
+    localStorage.setItem("highlight", type);
+    const customEvent = new CustomEvent("highlight-change", { detail: type });
+    document.body.dispatchEvent(customEvent);
+    changeBgColor(bgColor);
+    changeThemeColor(themeColor);
+  };
   const themes = [
     {
       name: "Theme Select",
       options: [
         <div key="default" className="default-select">
-          <button onClick={() => handleThemeSelectClick("Default", "#000")}>
+          <button
+            onClick={() => changeAppTheming("default", "#000000", "#00000026")}
+          >
             Default
           </button>
         </div>,
         <div key="vintage" className="vintage-select">
-          <button onClick={() => handleThemeSelectClick("Vintage", "#4C4B16")}>
+          <button
+            onClick={() =>
+              changeAppTheming(
+                "vintage",
+                "var(--vintage-theme-color-base)",
+                "var(--vintage-theme-color)"
+              )
+            }
+          >
             Vintage
           </button>
         </div>,
         <div key="gold" className="gold-select">
-          <button onClick={() => handleThemeSelectClick("Gold", "#D36B00")}>
+          <button
+            onClick={() =>
+              changeAppTheming(
+                "gold",
+                "var(--gold-theme-color-base)",
+                "var(--gold-theme-color)"
+              )
+            }
+          >
             Gold
           </button>
         </div>,
         <div key="space" className="space-select">
-          <button onClick={() => handleThemeSelectClick("Space", "#001C30")}>
+          <button
+            onClick={() =>
+              changeAppTheming(
+                "space",
+                "var(--space-theme-color-base)",
+                "var(--space-theme-color)"
+              )
+            }
+          >
             Space
           </button>
         </div>,
         <div key="purple" className="purple-select">
-          <button onClick={() => handleThemeSelectClick("Purple", "#790252")}>
+          <button
+            onClick={() =>
+              changeAppTheming(
+                "purple",
+                "var(--purple-theme-color-base)",
+                "var(--purple-theme-color)"
+              )
+            }
+          >
             Purple
           </button>
         </div>,
         <div key="red" className="red-select">
-          <button onClick={() => handleThemeSelectClick("Red", "#850000")}>
+          <button
+            onClick={() =>
+              changeAppTheming(
+                "red",
+                "var(--red-theme-color-base)",
+                "var(--red-theme-color)"
+              )
+            }
+          >
             Red
           </button>
         </div>,
@@ -50,24 +102,12 @@ function Themes({
     {
       name: "Create your own theme",
       options: [
-        <div key="navbar" className="navbar-create">
-          <span>Body</span>
-          <button
-            className="theme-button"
-            onClick={() => handleThemeColorChange("")}
-          >
-            Change Color
-          </button>
-        </div>,
-        <div key="background" className="background-create">
-          <span>Background</span>
-          <button
-            className="theme-button"
-            onClick={() => handleThemeColorChange("background")}
-          >
-            Change Color
-          </button>
-        </div>,
+        <CreateYourOwnTheme
+          key={1}
+          setNavbarColor={setNavbarColor}
+          setBackgroundColor={setSelectedBackgroundColor}
+          handleThemeSelectClick={handleThemeSelectClick}
+        />,
       ],
     },
   ];
@@ -79,11 +119,7 @@ function Themes({
   const [tempThemeColor, setTempThemeColor] = useState("#000");
   const [showNavbarColorPickerButton, setShowNavbarColorPickerButton] =
     useState(false);
-  const initialBackgroundColor =
-    localStorage.getItem("backgroundColor") || "#ffffff";
-  const [backgroundSectionColor, setBackgroundSectionColor] = useState(
-    initialBackgroundColor
-  );
+  const [selectedButtonTheme, setSelectedButtonTheme] = useState("");
 
   const handleOptionSelectClick = (option) => {
     setSelectedOption(option);
@@ -94,22 +130,12 @@ function Themes({
     }
   };
 
-  const handleThemeColorChange = () => {
-    setSelectedOption("");
-    setSelectedTheme("Create your own theme");
-    setIsColorPickerOpen(true);
-  };
-
-  const handleFooterColorChange = (color) => {
-    const footer = document.querySelector(".footer");
-    if (footer) {
-      footer.style.setProperty("--footer-bg-color", color);
-    }
-  };
+  const handleFooterColorChange = () => {};
 
   const handleThemeSelect = (theme, themeColor) => {
     setSelectedTheme(theme);
     setSelectedOption("");
+    setSelectedButtonTheme(`${theme.toLowerCase()}-theme-color`);
     handleThemeSelectClick(theme, themeColor);
   };
 
@@ -126,7 +152,7 @@ function Themes({
         setNavbarColor(tempThemeColor);
       } else if (colorPickerTheme === "background") {
         const backgroundColorWithOpacity = `${tempThemeColor}33`;
-        setBackgroundColor(backgroundColorWithOpacity);
+        setSelectedBackgroundColor(backgroundColorWithOpacity);
         localStorage.setItem("selectedThemeColor", "background");
         localStorage.setItem("selectedThemeName", "Create your own theme");
       }
@@ -137,8 +163,6 @@ function Themes({
     setNavbarColor(color.hex);
   };
 
-  const themesStyle = { backgroundColor: selectedThemeColor };
-
   const handleSelectNavbarColor = () => {
     setIsColorPickerOpen(true);
     setSelectedOption("navbar-create");
@@ -147,18 +171,12 @@ function Themes({
 
   return (
     <div className="themes-wrapper">
-      <div
-        className="themes"
-        style={{
-          themesStyle,
-          backgroundColor:
-            selectedThemeColor === "background"
-              ? backgroundSectionColor
-              : selectedThemeColor,
-        }}
-      >
+      <div className="themes">
         <div className="themes-container">
-          <div>Choose a Theme</div>
+          <div>
+            <MdOutlineColorLens />
+            Choose a Theme
+          </div>
           <div className="theme">
             {themes.map((theme) => (
               <div
@@ -244,7 +262,7 @@ Themes.propTypes = {
   selectedThemeName: PropTypes.string.isRequired,
   navbarColor: PropTypes.string.isRequired,
   setNavbarColor: PropTypes.func.isRequired,
-  setBackgroundColor: PropTypes.func.isRequired,
+  setSelectedBackgroundColor: PropTypes.func.isRequired,
 };
 
 export default Themes;

@@ -2,12 +2,9 @@ import "./Footer.css";
 import { FaInstagram, FaGithub } from "react-icons/fa";
 import PropTypes from "prop-types";
 
-const Footer = ({ selectedThemeColor }) => {
+const Footer = () => {
   return (
-    <footer
-      className="footer"
-      style={{ "--footer-bg-color": selectedThemeColor }}
-    >
+    <footer className="footer">
       <div className="footer-content">
         <div className="footer-text">
           <p>You can find me on my social media accounts:</p>

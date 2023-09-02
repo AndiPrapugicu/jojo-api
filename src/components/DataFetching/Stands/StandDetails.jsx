@@ -45,7 +45,6 @@ const StandDetails = ({ selectedThemeName }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        flexDirection: "row",
       }}
     >
       <img
@@ -53,11 +52,9 @@ const StandDetails = ({ selectedThemeName }) => {
         alt={standDetails.name}
         className={`stand-img ${selectedThemeName.toLowerCase()}-theme`}
         style={{
-          width: "350px",
           height: "auto",
           margin: "0 30px",
           borderRadius: "15px",
-          // border: "1px solid #00ff00",
           boxShadow: "1px 1px 15px 1px",
           background: "white",
         }}

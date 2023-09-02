@@ -5,13 +5,18 @@ import {
   MdOutlineColorLens,
   MdOutlineSettings,
   MdOutlineLogin,
+  MdOutlineLogout,
 } from "react-icons/md";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import LoginButton from "../Login/LoginButton";
+import LogoutButton from "../Login/LogoutButton";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Dropdown({ selectedThemeName }) {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
+  const { isAuthenticated } = useAuth0();
 
   const toggleDropdown = () => {
     setDropdownVisible((prev) => !prev);
@@ -70,8 +75,8 @@ function Dropdown({ selectedThemeName }) {
           className={`dropdown-item themes-link ${selectedThemeName.toLowerCase()}-theme`}
         >
           <span>
-            <MdOutlineLogin />
-            Login
+            {isAuthenticated ? <MdOutlineLogout /> : <MdOutlineLogin />}
+            {isAuthenticated ? <LogoutButton /> : <LoginButton />}
           </span>
         </Link>
       </div>

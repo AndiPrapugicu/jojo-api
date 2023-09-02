@@ -3,6 +3,10 @@
   width: 50%;
 }
 
+.previous-button {
+  margin-right: 20px;
+}
+
 .characters ul {
   display: flex;
   flex-wrap: wrap;
@@ -19,10 +23,7 @@
 
 .characters li {
   width: 100%;
-  /* box sizing iti zice ca ce dimensiune ii dai tu sa ia in calcul si padding */
-  /* adica 300px card si 20px padding o sa fie 320px fara border box si 300 cu border box - te ajuta sa ai dimensiunile dorite tot timpu */
   box-sizing: border-box;
-  /* margin-bottom: 20px; */
   border: 2px solid black;
   border-radius: 15px;
   text-align: center;
@@ -221,4 +222,12 @@
   background-color: #fffad7;
   border: 1px solid #f86f03;
   box-shadow: 1px 1px 15px 1px #f86f03;
+}
+
+@media screen and (min-width: 400px) {
+  .page-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

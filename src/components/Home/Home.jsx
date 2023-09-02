@@ -4,9 +4,12 @@ import jotaro from "./jotaro.png";
 import { useState } from "react";
 import "./Home.css";
 import PropTypes from "prop-types";
+import useHighlightColor from "../../utils/useHighlightColor";
 
 function Home({ selectedThemeName }) {
   const [isHovered, setIsHovered] = useState(false);
+  console.log(selectedThemeName);
+  const highlightColor = useHighlightColor();
 
   const handleImageHover = () => {
     setIsHovered(true);
@@ -19,7 +22,7 @@ function Home({ selectedThemeName }) {
 
   return (
     <div
-      className={`home ${selectedThemeName.toLowerCase()}-theme-color`}
+      className={`home ${highlightColor}-theme-color`}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -41,7 +44,7 @@ function Home({ selectedThemeName }) {
             alt="Jotaro Kujo"
             onMouseEnter={handleImageHover}
             onMouseLeave={handleImageLeave}
-            className={`character-image ${selectedThemeName.toLowerCase()}-theme`}
+            className={`character-image ${highlightColor}-theme`}
           />
         </Link>
         <Link to="/stands">
@@ -50,7 +53,7 @@ function Home({ selectedThemeName }) {
             alt="Star Platinum"
             onMouseEnter={handleImageHover}
             onMouseLeave={handleImageLeave}
-            className={`stand-image ${selectedThemeName.toLowerCase()}-theme`}
+            className={`stand-image ${highlightColor}-theme`}
           />
         </Link>
       </div>

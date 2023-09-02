@@ -1,6 +1,6 @@
 .themes {
   color: white;
-  background-color: var(--themes-bg-color, black);
+  background-color: var(--app-background-color, black);
   font-family: Arial;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -61,6 +61,7 @@
   border-radius: 12px;
   margin-top: 5px;
   margin-bottom: 5px;
+  background-color: white;
 }
 
 .theme-button {

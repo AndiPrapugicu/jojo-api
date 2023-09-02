@@ -36,14 +36,13 @@ const CharacterDetail = ({ selectedThemeName }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        flexDirection: "row",
       }}
     >
       <img
         src={characterImages[characterDetails.name]}
         alt={characterDetails.name}
         style={{
-          width: "350px",
+          // width: "350px",
           height: "auto",
           margin: "0 30px",
           borderRadius: "15px",

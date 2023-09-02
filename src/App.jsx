@@ -10,17 +10,34 @@ import Home from "./components/Home/Home";
 import StandDetails from "./components/DataFetching/Stands/StandDetails";
 import Settings from "./components/Settings/Settings";
 import Themes from "./components/Themes/Themes";
+import Login from "./components/Login/Login";
 
 function App() {
   const initialThemeColor = localStorage.getItem("selectedThemeColor") || "";
   const initialThemeName =
     localStorage.getItem("selectedThemeName") || "Default";
+  const initialBackgroundColor =
+    localStorage.getItem("backgroundColor") || "#ffffff";
   const [results, setResults] = useState([]);
   const [selectedThemeColor, setSelectedThemeColor] =
     useState(initialThemeColor);
   const [selectedThemeName, setSelectedThemeName] = useState(initialThemeName);
   const [navbarColor, setNavbarColor] = useState("");
-  const [backgroundColor, setBackgroundColor] = useState("#000");
+  const [backgroundColor, setBackgroundColor] = useState(
+    initialBackgroundColor
+  );
+  const [selectedButtonTheme] = useState("");
+
+  useEffect(() => {
+    try {
+      const color = localStorage.getItem("selectedThemeColor");
+      document.body.style.setProperty("--app-background-color", color);
+      const bgColor = localStorage.getItem("selectedBackgroundColor");
+      document.body.style.setProperty("--app-content-bg-color", bgColor);
+    } catch (error) {
+      console.log("fail to load colors");
+    }
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,12 +54,12 @@ function App() {
     fetchData();
   }, []);
 
-  const handleThemeSelectClick = (themeName, themeColor) => {
-    setSelectedThemeName(themeName);
+  const handleThemeSelectClick = (themeColor) => {
+    setSelectedThemeName(selectedThemeColor);
     setSelectedThemeColor(themeColor);
-    localStorage.setItem("selectedThemeColor", themeColor);
-    localStorage.setItem("selectedThemeName", themeName);
-    setNavbarColor(themeName === "Create your own theme" ? themeColor : "");
+    setNavbarColor(
+      selectedThemeColor === "Create your own theme" ? themeColor : ""
+    );
   };
 
   const handleBackgroundColorChange = (color) => {
@@ -54,7 +71,6 @@ function App() {
       <div
         id="root"
         className={`app ${selectedThemeName.toLowerCase()}-theme-color`}
-        style={{ backgroundColor: `var(--app-background-color)` }}
       >
         <Navbar
           results={results}
@@ -63,13 +79,22 @@ function App() {
           selectedThemeName={selectedThemeName}
           navbarColor={navbarColor}
           setNavbarColor={setNavbarColor}
+          selectedButtonTheme={selectedButtonTheme}
         />
         <div className="app-content">
           <Routes>
             <Route
               path="/"
               selectedThemeColor={selectedThemeColor}
-              element={<Home selectedThemeName={selectedThemeName} />}
+              element={
+                <Home
+                  results={results}
+                  selectedThemeColor={selectedThemeColor}
+                  handleThemeSelectClick={handleThemeSelectClick}
+                  selectedThemeName={selectedThemeName}
+                  selectedButtonTheme={selectedButtonTheme}
+                />
+              }
             />
             <Route
               path="/stands"
@@ -90,6 +115,7 @@ function App() {
               element={<StandDetails selectedThemeName={selectedThemeName} />}
             />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/login" element={<Login />} />
             <Route
               path="/themes"
               element={
@@ -99,7 +125,8 @@ function App() {
                   selectedThemeName={selectedThemeName}
                   navbarColor={navbarColor}
                   setNavbarColor={setNavbarColor}
-                  setBackgroundColor={handleBackgroundColorChange}
+                  selectedBackgroundColor={backgroundColor}
+                  setSelectedBackgroundColor={handleBackgroundColorChange}
                 />
               }
             />

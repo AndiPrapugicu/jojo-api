@@ -1,10 +1,3 @@
-.footer {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  background-color: var(--footer-bg-color, black);
-  color: white;
-}
-
 #root {
   display: flex;
   flex-direction: column;
@@ -17,6 +10,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: var(--app-background-color, black) !important;
+  color: white;
 }
 
 .footer-content {
@@ -41,4 +39,10 @@
 .icon {
   color: #fff;
   font-size: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .footer {
+    width: 100vw;
+  }
 }

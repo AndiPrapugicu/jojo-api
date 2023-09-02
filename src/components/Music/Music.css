@@ -1,0 +1,43 @@
+.music-button {
+  background-color: transparent;
+  color: black;
+  font-size: 24px;
+  margin: 5px;
+}
+
+.music-button:hover {
+  background-color: rgb(224, 224, 224);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.song {
+  margin: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.volume-slider {
+  appearance: none;
+  height: 5px;
+  border-radius: 5px;
+  background: linear-gradient(
+    to right,
+    #ff0000 0%,
+    #ff0000 50%,
+    green 50%,
+    #00ff00 100%
+  );
+}
+
+.low-volume {
+  background: linear-gradient(to right, #ff0000, rgb(255, 162, 162));
+}
+
+.medium-volume {
+  background: #2b2b2b;
+}
+
+.high-volume {
+  background: linear-gradient(to right, rgb(173, 255, 173), #00ff00);
+}

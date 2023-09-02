@@ -1,21 +1,21 @@
 .stands {
   margin: 0 auto;
   width: 50%;
-  height: 100vh;
 }
 
 .stands ul {
   display: flex;
   flex-wrap: wrap;
+  gap: 20px;
   justify-content: space-between;
   list-style-type: none;
   padding: 0;
 }
 
 .stands li {
-  width: 18%;
-  margin-bottom: 20px;
-  border: 2px solid black; /* #77037b */
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid black;
   border-radius: 15px;
   text-align: center;
 }
@@ -38,16 +38,8 @@
 }
 
 .stands-data img {
-  width: 100px;
   height: auto;
-  border-radius: 25px;
-  border: 2px solid white;
 }
-
-/* .stands-data img:hover {
-  border-color: #00ff00 !important;
-  box-shadow: 1px 1px 15px 1px #00ff00;
-} */
 
 .pagination .stand-previous-button:hover {
   background-color: #171717;
@@ -242,3 +234,29 @@
   border: 1px solid #f86f03;
   box-shadow: 1px 1px 15px 1px #f86f03;
 }
+
+@media screen and (min-width: 480px) {
+  .stands li {
+    width: calc(50% - 20px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .stands li {
+    width: calc(33% - 20px);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .stands li {
+    width: calc(20% - 20px);
+  }
+}
+
+/* @media screen and (min-width: 400px) {
+  .page-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+} */

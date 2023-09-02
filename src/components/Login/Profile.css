@@ -1,0 +1,48 @@
+.user-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.edit-button-container button {
+  background-color: transparent;
+  color: black;
+}
+
+.edit-profile-modal button {
+  background-color: transparent;
+  color: black;
+}
+
+.profile-modal {
+  margin-left: 50px;
+}
+
+.edit-username {
+  display: flex;
+  align-items: center;
+}
+
+.edit-username button {
+  background-color: transparent;
+  color: black;
+}
+
+.edit-username-modal {
+  margin-left: 50px;
+}
