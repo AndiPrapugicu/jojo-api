@@ -29,9 +29,9 @@ function Home({ selectedThemeName }) {
         alignItems: "center",
         backgroundColor: isHovered
           ? "#2A2A2A"
-          : selectedThemeName.toLowerCase() === "default"
+          : highlightColor === "default"
           ? "#fff"
-          : `var(--${selectedThemeName.toLowerCase()}-theme-color)`,
+          : `var(-${highlightColor}-theme-color)`,
         transition: "background-color 0.3s ease",
       }}
     >
